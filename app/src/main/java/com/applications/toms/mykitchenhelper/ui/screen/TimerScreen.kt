@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.applications.toms.mykitchenhelper.AppState
 import com.applications.toms.mykitchenhelper.R
 import com.applications.toms.mykitchenhelper.ui.components.AddTimerBottomSheet
 import com.applications.toms.mykitchenhelper.ui.components.Timer
@@ -26,10 +27,12 @@ import kotlinx.coroutines.launch
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
-fun TimersScreen(viewModel: TimerViewModel = viewModel()) {
+fun TimersScreen(
+    appState: AppState,
+    viewModel: TimerViewModel
+) {
 
-    val sheetState = rememberModalBottomSheetState(ModalBottomSheetValue.HalfExpanded)
-    val scope = rememberCoroutineScope()
+    val scope = appState.coroutineScope
 
     val state by viewModel.state.collectAsState()
 
@@ -41,19 +44,20 @@ fun TimersScreen(viewModel: TimerViewModel = viewModel()) {
                 scope.launch {
                     timersName.add(it.name)
                     viewModel.start(it.time.toTimer())
-                    sheetState.hide()
+                    appState.hideModalSheet()
                 }
             }
         },
-        sheetState = sheetState,
+        sheetState = appState.modalBottomSheetState,
         sheetShape = BottomSheetShape
     ) {
         Scaffold(
+            scaffoldState = appState.scaffoldState,
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = {
                         scope.launch {
-                            sheetState.show()
+                            appState.showModalSheet()
                         }
                     }
                 ) {
