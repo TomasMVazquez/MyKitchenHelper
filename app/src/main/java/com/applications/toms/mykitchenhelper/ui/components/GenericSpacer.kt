@@ -8,8 +8,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
+import com.applications.toms.mykitchenhelper.R
 
 enum class SpacerType {
     VERTICAL,
@@ -17,7 +18,12 @@ enum class SpacerType {
 }
 
 @Composable
-fun GenericSpacer(type: SpacerType, padding: Dp = 0.dp, size: Dp = 1.dp, backgroundColor: Color = Color.Transparent) {
+fun GenericSpacer(
+    type: SpacerType,
+    padding: Dp = dimensionResource(id = R.dimen.no_padding),
+    size: Dp = dimensionResource(id = R.dimen.border_xxsmall),
+    backgroundColor: Color = Color.Transparent
+) {
     when(type){
         SpacerType.VERTICAL -> {
             VerticalSpacer(verticalPadding = padding, size = size, backgroundColor = backgroundColor)
@@ -31,7 +37,10 @@ fun GenericSpacer(type: SpacerType, padding: Dp = 0.dp, size: Dp = 1.dp, backgro
 @Composable
 fun VerticalSpacer(verticalPadding: Dp, size: Dp, backgroundColor: Color) {
     Spacer(modifier = Modifier
-        .padding(0.dp, verticalPadding)
+        .padding(
+            horizontal = dimensionResource(id = R.dimen.no_padding),
+            vertical = verticalPadding
+        )
         .fillMaxWidth()
         .size(size)
         .background(color = backgroundColor)
@@ -41,7 +50,10 @@ fun VerticalSpacer(verticalPadding: Dp, size: Dp, backgroundColor: Color) {
 @Composable
 fun HorizontalSpacer(horizontalPadding: Dp, size: Dp, backgroundColor: Color) {
     Spacer(modifier = Modifier
-        .padding(horizontalPadding, 0.dp)
+        .padding(
+            horizontal = horizontalPadding,
+            vertical = dimensionResource(id = R.dimen.no_padding)
+        )
         .fillMaxWidth()
         .size(size)
         .background(color = backgroundColor)

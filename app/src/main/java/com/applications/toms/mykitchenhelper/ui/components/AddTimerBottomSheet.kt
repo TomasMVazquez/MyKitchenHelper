@@ -15,12 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.applications.toms.domain.MyTimer
 import com.applications.toms.mykitchenhelper.AppState
 import com.applications.toms.mykitchenhelper.R
@@ -46,7 +44,7 @@ fun AddTimerBottomSheet(appState: AppState,onTimerStart: (MyTimer) -> Unit){
 
     LazyColumn(modifier = Modifier
         .fillMaxSize()
-        .padding(24.dp)
+        .padding(dimensionResource(id = R.dimen.padding_bottom_sheet))
     ) {
 
         item {
@@ -90,10 +88,6 @@ fun AddTimerBottomSheet(appState: AppState,onTimerStart: (MyTimer) -> Unit){
                         timeSettled = timeClicked.toTimeFormat()
                         appState.clearFocus()
                     },
-                    contentPadding = PaddingValues(
-                        horizontal = 20.dp,
-                        vertical = 12.dp
-                    ),
                     shape = Shapes.medium
                 ) {
                     Text(
@@ -106,7 +100,10 @@ fun AddTimerBottomSheet(appState: AppState,onTimerStart: (MyTimer) -> Unit){
         }
 
         item {
-            GenericSpacer(type = SpacerType.VERTICAL, padding = 2.dp)
+            GenericSpacer(
+                type = SpacerType.VERTICAL,
+                padding = dimensionResource(id = R.dimen.spacer_xsmall)
+            )
         }
 
         item {
@@ -120,7 +117,10 @@ fun AddTimerBottomSheet(appState: AppState,onTimerStart: (MyTimer) -> Unit){
         }
 
         item {
-            GenericSpacer(type = SpacerType.VERTICAL, padding = 4.dp)
+            GenericSpacer(
+                type = SpacerType.VERTICAL,
+                padding = dimensionResource(id = R.dimen.spacer_small)
+            )
         }
 
         items(numbers){ rowList ->
@@ -138,7 +138,10 @@ fun AddTimerBottomSheet(appState: AppState,onTimerStart: (MyTimer) -> Unit){
         }
 
         item {
-            GenericSpacer(type = SpacerType.VERTICAL, padding = 4.dp)
+            GenericSpacer(
+                type = SpacerType.VERTICAL,
+                padding = dimensionResource(id = R.dimen.spacer_small)
+            )
         }
     }
 }

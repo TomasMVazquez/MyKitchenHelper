@@ -10,9 +10,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.applications.toms.mykitchenhelper.AppState
 import com.applications.toms.mykitchenhelper.R
 import com.applications.toms.mykitchenhelper.ui.components.AddTimerBottomSheet
@@ -73,21 +72,21 @@ fun TimersScreen(
 
             Box(modifier = Modifier.padding(paddingValues = paddingValues)) {
 
-                Column(modifier = Modifier.padding(vertical = 16.dp)) {
+                Column(modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.padding_large))) {
 
                     Text(
                         modifier = Modifier.padding(
-                            start = 16.dp,
-                            top = 0.dp,
-                            end = 16.dp,
-                            bottom = 8.dp
+                            start = dimensionResource(id = R.dimen.padding_large),
+                            top = dimensionResource(id = R.dimen.no_padding),
+                            end = dimensionResource(id = R.dimen.padding_large),
+                            bottom = dimensionResource(id = R.dimen.padding_small)
                         ),
                         text = stringResource(R.string.running_label),
                         style = MaterialTheme.typography.h1,
                     )
 
                     Divider(
-                        thickness = 2.dp,
+                        thickness = dimensionResource(id = R.dimen.spacer_xsmall),
                         color = Color.Black
                     )
 
@@ -103,7 +102,7 @@ fun TimersScreen(
                                 timeRemaining = timeRemaining
                             )
 
-                            Divider(modifier = Modifier.padding(horizontal = 16.dp))
+                            Divider(modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_large)))
                         }
                     }
 

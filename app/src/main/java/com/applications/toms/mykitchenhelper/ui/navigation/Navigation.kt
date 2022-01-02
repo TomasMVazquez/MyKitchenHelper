@@ -6,7 +6,6 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.applications.toms.mykitchenhelper.AppState
-import com.applications.toms.mykitchenhelper.ui.screen.TimerViewModel
 import com.applications.toms.mykitchenhelper.ui.screen.TimersScreen
 
 @ExperimentalMaterialApi

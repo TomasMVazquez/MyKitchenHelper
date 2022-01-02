@@ -6,12 +6,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.applications.toms.mykitchenhelper.util.toTimerStringFormat
+import com.applications.toms.mykitchenhelper.R
 
 /**
  * we can add here buttons for each timer to stop or cancel and delete from list
@@ -25,7 +26,7 @@ fun Timer(name: String,timeRemaining: Long) {
             .background(
                 color = if (timeRemaining < 6 && timeRemaining.toInt() % 2 != 0) Color.Yellow else Color.White
             )
-            .padding(16.dp),
+            .padding(dimensionResource(id = R.dimen.padding_large)),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
