@@ -7,3 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My Kitchen Helper"
 include ':app'
+include ':domain'
+include ':usecases'

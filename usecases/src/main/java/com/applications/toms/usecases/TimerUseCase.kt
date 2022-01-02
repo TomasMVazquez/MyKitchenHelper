@@ -1,4 +1,4 @@
-package com.applications.toms.mykitchenhelper
+package com.applications.toms.usecases
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.asFlow

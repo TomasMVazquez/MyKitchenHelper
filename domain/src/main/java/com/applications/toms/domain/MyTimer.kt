@@ -1,4 +1,4 @@
-package com.applications.toms.mykitchenhelper
+package com.applications.toms.domain
 
 data class MyTimer(
     val name: String,

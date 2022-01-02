@@ -1,0 +1,12 @@
+plugins {
+    id 'kotlin'
+}
+
+
+dependencies {
+    //Domain
+    implementation project(":domain")
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
+}

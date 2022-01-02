@@ -21,7 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.applications.toms.mykitchenhelper.MyTimer
+import com.applications.toms.domain.MyTimer
 import com.applications.toms.mykitchenhelper.R
 import com.applications.toms.mykitchenhelper.ui.theme.Shapes
 import com.applications.toms.mykitchenhelper.util.toTimeFormat
