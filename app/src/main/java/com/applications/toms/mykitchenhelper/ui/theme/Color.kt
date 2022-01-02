@@ -2,7 +2,7 @@ package com.applications.toms.mykitchenhelper.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val Juniper = Color(0xFF798C92)
+val ClamShell = Color(0xFFD6B0A7)
+val BlueZodiac = Color(0xFF3A4257)
+val Cameo = Color(0xFFF0DDBC)

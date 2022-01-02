@@ -3,7 +3,6 @@ package com.applications.toms.mykitchenhelper.ui.navigation
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.applications.toms.mykitchenhelper.AppState
@@ -20,10 +19,8 @@ fun Navigation(appState: AppState) {
          * TODO: To make it scalable we should add NavItems with a Grapf builder...
          */
         composable("home") {
-            val viewModel = viewModel<TimerViewModel>()
             TimersScreen(
-                appState = appState,
-                viewModel = viewModel
+                appState = appState
             )
         }
     }

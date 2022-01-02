@@ -59,7 +59,11 @@ fun String.toTimer(): Long {
 }
 
 fun Long.toTimerStringFormat(): String{
-    var elapsedSeconds = this
+    var negativeValue = ""
+    var elapsedSeconds = if (this < 0) {
+        negativeValue = "- "
+        this * -1
+    }else this
     // Break the elapsed seconds into hours, minutes, and seconds.
     var hours: Long = 0
     var minutes: Long = 0
@@ -75,5 +79,5 @@ fun Long.toTimerStringFormat(): String{
     seconds = elapsedSeconds
     val sb = StringBuilder(8)
     val f = Formatter(sb, Locale.getDefault())
-    return f.format("%1\$02d : %2\$02d : %3\$02d", hours, minutes, seconds).toString()
+    return f.format("$negativeValue%1\$02d : %2\$02d : %3\$02d", hours, minutes, seconds).toString()
 }

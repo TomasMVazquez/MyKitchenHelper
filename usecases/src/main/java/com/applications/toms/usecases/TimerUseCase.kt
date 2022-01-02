@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.onEach
 class StartTimerUseCase() {
 
     suspend operator fun invoke(totalSeconds: Long, index: Int) = flow {
-        (totalSeconds downTo 0).asFlow().onEach {
+        (totalSeconds downTo -1000).asFlow().onEach {
             delay(1000) //Un segundo de espera
         }.conflate().collect {
             emit(index to it)

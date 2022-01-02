@@ -22,16 +22,15 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.applications.toms.domain.MyTimer
+import com.applications.toms.mykitchenhelper.AppState
 import com.applications.toms.mykitchenhelper.R
 import com.applications.toms.mykitchenhelper.ui.theme.Shapes
 import com.applications.toms.mykitchenhelper.util.toTimeFormat
 
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
-fun AddTimerBottomSheet(onTimerStart: (MyTimer) -> Unit){
-
-    val keyboardController = LocalSoftwareKeyboardController.current
-    val focusManager = LocalFocusManager.current
+fun AddTimerBottomSheet(appState: AppState,onTimerStart: (MyTimer) -> Unit){
 
     var input by rememberSaveable { mutableStateOf("") }
     val emptyName = stringResource(id = R.string.label_my_timer_name)
@@ -66,8 +65,8 @@ fun AddTimerBottomSheet(onTimerStart: (MyTimer) -> Unit){
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(
                         onDone = {
-                            keyboardController?.hide()
-                            focusManager.clearFocus()
+                            appState.hideKeyboard()
+                            appState.clearFocus()
                         }
                     ),
                     colors = TextFieldDefaults.textFieldColors(
@@ -87,8 +86,9 @@ fun AddTimerBottomSheet(onTimerStart: (MyTimer) -> Unit){
                             )
                         )
                         input = ""
-                        timeSettled = "".toTimeFormat()
-                        focusManager.clearFocus()
+                        timeClicked = ""
+                        timeSettled = timeClicked.toTimeFormat()
+                        appState.clearFocus()
                     },
                     contentPadding = PaddingValues(
                         horizontal = 20.dp,

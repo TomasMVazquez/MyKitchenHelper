@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.MoreTime
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -22,6 +23,7 @@ import kotlinx.coroutines.launch
 
 /**
  * TODO: We should add all DPs to a dimension res and not adding directly on components
+ * TODO : FIX ERROR WHEN IS COUNTING AND THE APP GOES TO BACKGROUND AND RETURNS TO FOREGROUND (IndexOutOfBoundsException: Index: 0, Size: 0)
  */
 
 @ExperimentalMaterialApi
@@ -29,7 +31,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun TimersScreen(
     appState: AppState,
-    viewModel: TimerViewModel
+    viewModel: TimerViewModel = TimerViewModel()
 ) {
 
     val scope = appState.coroutineScope
@@ -40,7 +42,7 @@ fun TimersScreen(
 
     ModalBottomSheetLayout(
         sheetContent = {
-            AddTimerBottomSheet(){
+            AddTimerBottomSheet(appState = appState){
                 scope.launch {
                     timersName.add(it.name)
                     viewModel.start(it.time.toTimer())
@@ -71,16 +73,23 @@ fun TimersScreen(
 
             Box(modifier = Modifier.padding(paddingValues = paddingValues)) {
 
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(modifier = Modifier.padding(vertical = 16.dp)) {
 
                     Text(
+                        modifier = Modifier.padding(
+                            start = 16.dp,
+                            top = 0.dp,
+                            end = 16.dp,
+                            bottom = 8.dp
+                        ),
                         text = stringResource(R.string.running_label),
                         style = MaterialTheme.typography.h1,
                     )
 
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Divider()
+                    Divider(
+                        thickness = 2.dp,
+                        color = Color.Black
+                    )
 
                     LazyColumn(
                         modifier = Modifier
@@ -88,11 +97,13 @@ fun TimersScreen(
                             .weight(1f)
                     ) {
                         itemsIndexed(state) { index, timeRemaining ->
+
                             Timer(
                                 name = timersName[index],
                                 timeRemaining = timeRemaining
                             )
-                            Divider()
+
+                            Divider(modifier = Modifier.padding(horizontal = 16.dp))
                         }
                     }
 

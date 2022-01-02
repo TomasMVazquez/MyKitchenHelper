@@ -1,9 +1,11 @@
 package com.applications.toms.mykitchenhelper.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -18,7 +20,12 @@ import com.applications.toms.mykitchenhelper.util.toTimerStringFormat
 fun Timer(name: String,timeRemaining: Long) {
 
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = if (timeRemaining < 6 && timeRemaining.toInt() % 2 != 0) Color.Yellow else Color.White
+            )
+            .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
@@ -34,7 +41,8 @@ fun Timer(name: String,timeRemaining: Long) {
             modifier = Modifier,
             text = timeRemaining.toTimerStringFormat(),
             maxLines = 1,
-            style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Medium)
+            style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Medium),
+            color = if (timeRemaining < 11) Color.Red else Color.Black
         )
     }
 
