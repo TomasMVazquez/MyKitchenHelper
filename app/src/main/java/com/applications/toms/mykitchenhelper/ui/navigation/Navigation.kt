@@ -11,7 +11,7 @@ import com.applications.toms.mykitchenhelper.ui.screen.TimersScreen
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
-fun Navigation(appState: AppState) {
+fun Navigation(appState: AppState, state: List<Long>, timersName: MutableList<String>) {
 
     NavHost(navController = appState.navController, startDestination = "home") {
         /**
@@ -19,7 +19,8 @@ fun Navigation(appState: AppState) {
          */
         composable("home") {
             TimersScreen(
-                appState = appState
+                state = state,
+                timersName = timersName
             )
         }
     }
