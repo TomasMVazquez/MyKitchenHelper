@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.ExperimentalComposeUiApi
+import com.applications.toms.mykitchenhelper.ui.TimerApp
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi

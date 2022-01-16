@@ -1,4 +1,4 @@
-package com.applications.toms.mykitchenhelper
+package com.applications.toms.mykitchenhelper.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -12,9 +12,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import com.applications.toms.mykitchenhelper.R
 import com.applications.toms.mykitchenhelper.ui.components.AddTimerBottomSheet
 import com.applications.toms.mykitchenhelper.ui.navigation.Navigation
-import com.applications.toms.mykitchenhelper.ui.screen.TimerViewModel
+import com.applications.toms.mykitchenhelper.ui.screen.home.TimerViewModel
 import com.applications.toms.mykitchenhelper.ui.theme.BottomSheetShape
 import com.applications.toms.mykitchenhelper.ui.theme.MyKitchenHelperTheme
 import com.applications.toms.mykitchenhelper.util.toTimer
@@ -50,17 +51,19 @@ fun TimerApp(
             Scaffold(
                 scaffoldState = appState.scaffoldState,
                 floatingActionButton = {
-                    FloatingActionButton(
-                        onClick = {
-                            appState.coroutineScope.launch {
-                                appState.showModalSheet()
+                    if (appState.showFloatingActionButton) {
+                        FloatingActionButton(
+                            onClick = {
+                                appState.coroutineScope.launch {
+                                    appState.showModalSheet()
+                                }
                             }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.MoreTime,
+                                contentDescription = stringResource(R.string.content_desc_add_timer)
+                            )
                         }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.MoreTime,
-                            contentDescription = stringResource(R.string.content_desc_add_timer)
-                        )
                     }
                 }
             ) { paddingValues ->

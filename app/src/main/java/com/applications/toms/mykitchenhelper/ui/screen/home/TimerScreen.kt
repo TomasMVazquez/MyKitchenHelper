@@ -1,10 +1,13 @@
-package com.applications.toms.mykitchenhelper.ui.screen
+package com.applications.toms.mykitchenhelper.ui.screen.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -13,28 +16,35 @@ import androidx.compose.ui.res.stringResource
 import com.applications.toms.mykitchenhelper.R
 import com.applications.toms.mykitchenhelper.ui.components.Timer
 
-/**
- * TODO: We should add all DPs to a dimension res and not adding directly on components
- * TODO : FIX ERROR WHEN IS COUNTING AND THE APP GOES TO BACKGROUND AND RETURNS TO FOREGROUND (IndexOutOfBoundsException: Index: 0, Size: 0)
- */
-
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
-fun TimersScreen(state: List<Long>, timersName: MutableList<String>) {
+fun TimersScreen(state: List<Long>, timersName: MutableList<String>, infoClick: () -> Unit) {
 
     Column(modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.padding_large))) {
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .padding(
+                    start = dimensionResource(id = R.dimen.padding_large),
+                    top = dimensionResource(id = R.dimen.no_padding),
+                    end = dimensionResource(id = R.dimen.no_padding),
+                    bottom = dimensionResource(id = R.dimen.padding_small)
+                ),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = stringResource(R.string.running_label),
+                style = MaterialTheme.typography.h1,
+            )
 
-        Text(
-            modifier = Modifier.padding(
-                start = dimensionResource(id = R.dimen.padding_large),
-                top = dimensionResource(id = R.dimen.no_padding),
-                end = dimensionResource(id = R.dimen.padding_large),
-                bottom = dimensionResource(id = R.dimen.padding_small)
-            ),
-            text = stringResource(R.string.running_label),
-            style = MaterialTheme.typography.h1,
-        )
+            IconButton(onClick = infoClick) {
+                Icon(
+                    imageVector = Icons.Outlined.Info,
+                    contentDescription = stringResource(id = R.string.about_us)
+                )
+            }
+        }
 
         Divider(
             thickness = dimensionResource(id = R.dimen.spacer_xsmall),

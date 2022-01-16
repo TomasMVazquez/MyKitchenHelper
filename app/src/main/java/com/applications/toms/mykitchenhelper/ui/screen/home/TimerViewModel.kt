@@ -1,4 +1,4 @@
-package com.applications.toms.mykitchenhelper.ui.screen
+package com.applications.toms.mykitchenhelper.ui.screen.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,4 +1,4 @@
-package com.applications.toms.mykitchenhelper
+package com.applications.toms.mykitchenhelper.ui
 
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -11,7 +11,9 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.applications.toms.mykitchenhelper.ui.navigation.NavFeature
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -39,6 +41,15 @@ class AppState constructor (
     private val focusManager: FocusManager,
     private val keyboardController: SoftwareKeyboardController?
 ) {
+    private val currentRoute: String
+        @Composable get() = navController.currentBackStackEntryAsState().value?.destination?.route
+            ?: ""
+
+    val showFloatingActionButton: Boolean
+        @Composable get() {
+            return !currentRoute.contains(NavFeature.ABOUT_US.route)
+        }
+
     fun hideKeyboard() {
         keyboardController?.hide()
     }
