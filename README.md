@@ -10,7 +10,7 @@ My Kitchen Helper App incluye las siguientes características:
 * Modal Sheet Bottom para la selección de nuevo temporizador.
 * Campos de texto para incluir nombre del temporizador.
 * Completado de tiempo mediante un teclado numérico propio.
-* Floatinc Action Button para abrir el modal y crear nuevo temporizador.
+* Floating Action Button para abrir el modal y crear nuevo temporizador.
 * Navegación hacía la pantalla "Sobre nosotros".
 
 ### Screenshots
@@ -26,7 +26,7 @@ My Kitchen Helper App incluye las siguientes características:
 * Android Studio
 * GitHub Repository
 
-### Librerias externas
+### Librerías externas
 
 ### Test
 
@@ -38,3 +38,6 @@ My Kitchen Helper App incluye las siguientes características:
 ### Development
 * Author: Tomás M. Vazquez
 * Contact: https://www.linkedin.com/in/tomas-vazquez
+
+### Contenido de libre disposición
+* Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
